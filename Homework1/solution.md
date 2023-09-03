@@ -1,3 +1,6 @@
+# Homework 1
+Omkar Yadav
+
 ## Question 1: CHARACTERS MEDIAN AND MODE
 
 Given an array of size **n** that contains only Latin characters, describe an efficient algorithm that finds the median (lower if 'n' is even) and the mode (most frequent element). If there are multiple elements that appear the maximum number of times, output any one of them.
@@ -13,11 +16,13 @@ Output: Mode = R, Median = G
 
 ---
 
-**Answer 1:**
+## Assumption 
+Latin characters are only the ASCII characters, and not UTF-8 special characters.
 
-**Assumption:** Latin characters are only the ASCII characters, and not UTF-8 special characters.
+## Approach
+Make a frequency array of size 52 (26 uppercase and 26 lowercase characters). Find the Median and Mode through this.
 
-**Approach:** Make a frequency array of size 52 (26 uppercase and 26 lowercase characters). Find the Median and Mode through this.
+## Code
 
 ```cpp
 class Question1 {
@@ -62,3 +67,4 @@ public:
     }
 };
 ```
+
