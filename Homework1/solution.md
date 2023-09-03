@@ -23,6 +23,8 @@ Latin characters are only the ASCII characters, and not UTF-8 special characters
 Make a frequency array of size 52 (26 uppercase and 26 lowercase characters). Find the Median and Mode through this.
 
 ## Code
+<details>
+<summary>Snippet</summary>
 
 ```cpp
 class Question1 {
@@ -67,4 +69,4 @@ public:
     }
 };
 ```
-
+</details>
