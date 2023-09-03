@@ -1,5 +1,5 @@
-# Homework 1
-Omkar Yadav
+# Homework 1 Documentation
+**Author:** Omkar Yadav
 
 ## Question 1: CHARACTERS MEDIAN AND MODE
 
