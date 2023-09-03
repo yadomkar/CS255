@@ -17,13 +17,13 @@ Output: Mode = R, Median = G
 ```
 ---
 
-## Assumption 
+### Assumption 
 Latin characters are only the ASCII characters, and not UTF-8 special characters.
 
-## Approach
+### Approach
 Make a frequency array of size 52 (26 uppercase and 26 lowercase characters). Find the Median and Mode through this.
 
-## Code
+### Code
 <details>
 <summary>Snippet</summary>
 
