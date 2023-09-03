@@ -18,10 +18,10 @@ Output: Mode = R, Median = G
 ---
 
 ### Assumption 
-Latin characters are only the ASCII characters, and not UTF-8 special characters.
+Latin characters refer to ASCII characters and exclude UTF-8 special characters.
 
 ### Approach
-Make a frequency array of size 52 (26 uppercase and 26 lowercase characters). Find the Median and Mode through this.
+The solution employs a frequency array of size 52, representing uppercase and lowercase characters. It calculates the median and mode through this array in constant time and space.
 
 ### Code
 <details>
