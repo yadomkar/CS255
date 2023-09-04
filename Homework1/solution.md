@@ -74,11 +74,11 @@ public:
 </details>
 
 ### Analysis
-**Time Complexity: O(n)**
+**Time Complexity:** $O(n)$
 - Where n is the size of the input array. 
 - We traverse the input array once to compute frequencies. After this, processing on the frequency array is in constant time due to its fixed size.
 
-**Space Complexity: O(1)**
+**Space Complexity:** $O(1)$
 - As the frequency array is of fixed size, we only use constant space.
 
 ---
