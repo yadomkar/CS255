@@ -1,6 +1,8 @@
 # Homework 1 Documentation
 **Author:** Omkar Yadav
 
+---
+
 ## Question 1: CHARACTERS MEDIAN AND MODE
 
 Given an array of size **n** that contains only Latin characters, describe an efficient algorithm that finds the median (lower if 'n' is even) and the mode (most frequent element). If there are multiple elements that appear the maximum number of times, output any one of them.
@@ -71,3 +73,27 @@ public:
 };
 ```
 </details>
+
+---
+
+## Q2: WHERE IS THE ZERO?
+Alice has a sorted array `A[1, . . . , n]` with distinct positive numbers. Now Bob has another almost
+sorted array `B[1, . . . , n + 1]`, which is derived from inserting a zero into A. Help Bob to discover
+the index of this zero. Design and analyze an efficient algorithm for him to find the index of the
+zero in B. 
+
+Hint: use A and B in your solution.
+
+**Example:**
+```
+If
+A ∶ 1, 3, 4, 6, 7, 8, 9, 20
+B ∶ 1, 3, 0, 4, 6, 7, 8, 9, 20.
+
+Your algorithm should return 3 in this case, 
+which is the index of the zero in B (starting from 1).
+```
+
+---
+
+
