@@ -153,9 +153,10 @@ node order for each type of graph search, starting with 0.
 
 ### Draw the graph
 
-<p align="center">
-    <img src="assets/q3_draw.png"/>
-</p>
+[//]: # (<p align="center">)
+<img src="assets/q3_draw.png"/>
+
+[//]: # (</p>)
 
 ### Breadth First Search
 
