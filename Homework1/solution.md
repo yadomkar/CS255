@@ -147,15 +147,15 @@ Given the following adjacency list representation of a graph (every node has the
 neighbor and the weight of the edge, note all have 1 weight), draw the graph, give the visited
 node order for each type of graph search, starting with 0.
 
-<div style="text-align: center">
+<p align="center">
     <img src="assets/q3_adjacency.png"/>
-</div>
+</p>
 
 ### Draw the graph
 
-<div style="text-align: center">
+<p align="center">
     <img src="assets/q3_draw.png"/>
-</div>
+</p>
 
 ### Breadth First Search
 
