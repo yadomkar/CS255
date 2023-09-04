@@ -136,7 +136,7 @@ public:
 - Where n is the size of the input arrays.
 - 
 
-**Space Complexity: $O(\1)$**
+**Space Complexity:** $O(1)$
 - As the frequency array is of fixed size, we only use constant space.
 
 ---
