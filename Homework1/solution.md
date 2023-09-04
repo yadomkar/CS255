@@ -134,7 +134,7 @@ public:
 ### Analysis
 **Time Complexity:** $O(\lg n)$
 - Where n is the size of the array B.
-- During each iteration, the search space is halved by adjusting either the start or end pointers. Therefore, we inspect at most $lgn$ elements of array B.
+- During each iteration, the search space is halved by adjusting either the start or end pointers. Therefore, we inspect at most $lg n$ elements of array B.
 
 **Space Complexity:** $O(1)$
 - As the frequency array is of fixed size, we only use constant space.
