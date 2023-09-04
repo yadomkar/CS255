@@ -76,10 +76,10 @@ public:
 ### Analysis
 **Time Complexity:** $O(n)$
 - Where n is the size of the input array. 
-- We traverse the input array once to compute frequencies. After this, processing on the frequency array is in constant time due to its fixed size.
+- The algorithm iterates through the input array once to compute frequencies. After this, processing on the frequency array is in constant time due to its fixed size.
 
 **Space Complexity:** $O(1)$
-- As the frequency array is of fixed size, we only use constant space.
+- As the frequency array is of fixed size, the algorithm uses constant space.
 
 ---
 
@@ -137,7 +137,7 @@ public:
 - During each iteration, the search space is halved by adjusting either the start or end pointers. Therefore, we inspect at most $\lg n$ elements of array B.
 
 **Space Complexity:** $O(1)$
-- As the frequency array is of fixed size, we only use constant space.
+- The algorithm consistently uses a fixed amount of extra space regardless of input size.
 
 ---
 
