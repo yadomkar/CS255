@@ -27,7 +27,7 @@ public:
 
 int main() {
     vector<int> a = {1, 3, 4, 6, 7, 8, 9, 20};
-    vector<int> b = {0, 1, 3, 4, 6, 7, 8, 9, 20};
+    vector<int> b = {1, 3, 0, 4, 6, 7, 8, 9, 20};
 
     int zeroIndex = Question2::whereIsTheZero(a, b);
 

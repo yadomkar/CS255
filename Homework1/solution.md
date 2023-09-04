@@ -3,7 +3,7 @@
 
 ---
 
-## Question 1: CHARACTERS MEDIAN AND MODE
+## Q1: CHARACTERS MEDIAN AND MODE
 
 Given an array of size **n** that contains only Latin characters, describe an efficient algorithm that finds the median (lower if 'n' is even) and the mode (most frequent element). If there are multiple elements that appear the maximum number of times, output any one of them.
 
@@ -17,13 +17,12 @@ Output: Mode = A, Median = A
 Input: array a[] = {G, F, R, R, C}  
 Output: Mode = R, Median = G
 ```
----
 
 ### Assumption 
 Latin characters refer to ASCII characters and exclude UTF-8 special characters.
 
 ### Approach
-The solution employs a frequency array of size 52, representing uppercase and lowercase characters. It calculates the median and mode through this array in constant time and space.
+The solution employs a frequency array of size 52, representing uppercase and lowercase characters. The frequency array is used to compute the median and mode in constant time and space.
 
 ### Code
 <details>
@@ -74,6 +73,14 @@ public:
 ```
 </details>
 
+### Analysis
+**Time Complexity: O(n)**
+- Where n is the size of the input array. 
+- We traverse the input array once to compute frequencies. After this, processing on the frequency array is in constant time due to its fixed size.
+
+**Space Complexity: O(1)**
+- As the frequency array is of fixed size, we only use constant space.
+
 ---
 
 ## Q2: WHERE IS THE ZERO?
@@ -93,6 +100,44 @@ B ∶ 1, 3, 0, 4, 6, 7, 8, 9, 20.
 Your algorithm should return 3 in this case, 
 which is the index of the zero in B (starting from 1).
 ```
+
+### Assumption
+Array A only contains positive numbers.
+
+### Approach
+- **Brute Force:** Linear search for 0 in array B. 
+- **Optimal Approach:** Divide and Conquer (modified binary search) using both arrays.
+
+### Code
+<details>
+<summary>Snippet</summary>
+
+```cpp
+class Question2 {
+public:
+    static int whereIsTheZero(vector<int>& a, vector<int>& b) {
+        int start = 0, end = (int) b.size();
+
+        while(start <= end) {
+            int mid = start + (end - start) / 2;
+            if(b[mid] == 0) return mid + 1;
+            else if(b[mid] == a[mid]) start = mid + 1;
+            else end = mid - 1;
+        }
+
+        return (int) b.size();
+    }
+};
+```
+</details>
+
+### Analysis
+**Time Complexity:** $O(\lg n)$
+- Where n is the size of the input arrays.
+- 
+
+**Space Complexity: O(1)**
+- As the frequency array is of fixed size, we only use constant space.
 
 ---
 
