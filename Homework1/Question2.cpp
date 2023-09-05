@@ -34,3 +34,10 @@ int main() {
     cout << zeroIndex << endl;
     return 0;
 }
+
+/*
+
+Output:
+3
+
+ */

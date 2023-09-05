@@ -51,11 +51,28 @@ public:
 };
 
 int main() {
-//    vector<char> input = {'F', 'A', 'D', 'A', 'B', 'A'};
-    vector<char> input = {'G', 'F', 'R', 'R', 'C'};
-    pair<char, char> answer = Question1::charactersMedianAndMode(input);
-    cout << "Median: " << answer.first << endl;
-    cout << "Mode: " << answer.second << endl;
+    vector<char> input1 = {'F', 'A', 'D', 'A', 'B', 'A'};
+    vector<char> input2 = {'G', 'F', 'R', 'R', 'C'};
+    pair<char, char> answer1 = Question1::charactersMedianAndMode(input1);
+    pair<char, char> answer2 = Question1::charactersMedianAndMode(input2);
+
+    cout << "Answer 1: " << endl;
+    cout << "Median: " << answer1.first << " ";
+    cout << "Mode: " << answer1.second << endl;
+
+    cout << "Answer 2: " << endl;
+    cout << "Median: " << answer2.first << " ";
+    cout << "Mode: " << answer2.second << endl;
     return 0;
 }
+
+/*
+
+Output:
+Answer 1:
+Median: A Mode: A
+Answer 2:
+Median: G Mode: R
+
+ */
 
