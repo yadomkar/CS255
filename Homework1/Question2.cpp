@@ -5,8 +5,8 @@
 // Space Complexity: O(1)
 //
 
-#include<vector>
-#include<iostream>
+#include <vector>
+#include <iostream>
 
 using namespace std;
 

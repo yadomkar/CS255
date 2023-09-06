@@ -2,9 +2,9 @@
 // Created by Omkar Yadav on 9/3/23.
 //
 
-#include<iostream>
-#include<vector>
-#include<queue>
+#include <iostream>
+#include <vector>
+#include <queue>
 
 using namespace std;
 
