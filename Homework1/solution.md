@@ -259,7 +259,7 @@ static vector<int> breadthFirstSearch(vector<vector<pair<int, int>>>& graph, int
 </details>
 
 ### Analysis
-**Time Complexity:** $O(\V \+ E)$
+**Time Complexity:** $O(V \+ E)$
 - Where V is the number of vertices in the graph, and E is the number of edges in the graph.
 - BFS visits all vertices in the graph and all edges which connect these vertices.
 
