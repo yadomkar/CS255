@@ -32,23 +32,20 @@ Time: $O(n\lg n)$, Space: $O(\lg n)$
 
 ### Pseudocode
 ```text
-Question1
+procedure MEDIAN-AND-MODE(data[1..n])
+  declare freq[1..52] := {0}
+  for i := 1 to n
+    // Populate freq based on data
+  return (FIND-MEDIAN(freq, n), FIND-MODE(freq))
 
-FUNCTION MEDIAN-AND-MODE(data[1..n])
-    DECLARE freq[1..52] ← {0}
-    FOR i ← 1 TO n
-        // Populate freq based on data
-    RETURN (FIND-MEDIAN(freq, n), FIND-MODE(freq))
+function FIND-MEDIAN(freq[1..52], n)
+  medianIndex := ⌈n/2⌉
+  // Determine median character based on freq in constant time
+  return medianChar
 
-
-FUNCTION FIND-MEDIAN(freq[1..52], n)
-    medianIndex ← ⌈n/2⌉
-    // Determine median character based on freq in constant time
-    RETURN medianChar
-
-FUNCTION FIND-MODE(freq[1..52])
-    // Determine mode character based on freq in constant time
-    RETURN modeChar
+function FIND-MODE(freq[1..52])
+  // Determine mode character based on freq in constant time
+  return modeChar
 ```
 
 
@@ -144,25 +141,21 @@ Divide and Conquer (modified binary search) using both arrays.
 ### Pseudocode
 
 ```text
-Question2
+procedure whereIsTheZero(a, b)
+  start = 0
+  end = b.length
 
-FUNCTION WHERE-IS-THE-ZERO(a[1..n], b[1..n])
-    start ← 1
-    end ← n
+  while start <= end
+    mid = start + (end - start) / 2
 
-    WHILE start ≤ end DO
-        mid ← start + ⌊(end - start) / 2⌋
-        IF b[mid] = 0 THEN
-            RETURN mid
-        ELSE IF b[mid] = a[mid] THEN
-            start ← mid + 1
-        ELSE
-            end ← mid - 1
-        END IF
-    END WHILE
+    if b[mid] == 0
+      return mid + 1
+    elif b[mid] == a[mid]
+      start = mid + 1
+    else
+      end = mid - 1
 
-    RETURN n
-
+  return b.length
 ```
 
 ### Code Snippet
@@ -215,7 +208,24 @@ node order for each type of graph search, starting with 0.
 
 ### Breadth First Search
 
+### Pseudocode
 
+```text
+procedure breadthFirstSearch(graph, start)
+  queue q
+  set visited = {}
+
+  q.enqueue(start)
+  visited.add(start)
+
+  while not q.isEmpty()
+    vertex v = q.dequeue()
+
+    for each neighbor w of v
+      if not visited.contains(w)
+        q.enqueue(w)
+        visited.add(w)
+```
 
 ### Depth First Search
 ### Give the length of the shortest path from 0 to 5
