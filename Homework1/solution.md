@@ -201,12 +201,12 @@ node order for each type of graph search, starting with 0.
     <img src="assets/q3_adjacency.png"/>
 </p>
 
-### Draw the graph
+## Draw the graph
 
 <img src="assets/q3_draw.png"/>
 
 
-### Breadth First Search
+## Breadth First Search
 
 ### Pseudocode
 
@@ -227,8 +227,48 @@ procedure breadthFirstSearch(graph, start)
         visited.add(w)
 ```
 
-### Depth First Search
-### Give the length of the shortest path from 0 to 5
+### Code Snippet
+<details>
+<summary>Expand</summary>
+
+```cpp
+static vector<int> breadthFirstSearch(vector<vector<pair<int, int>>>& graph, int start) {
+    vector<int> visitedOrder;
+    queue<int> q;
+    vector<bool> visited(graph.size(), false);
+
+    q.push(start);
+    visited[start] = true;
+    visitedOrder.push_back(start);
+
+    while(!q.empty()) {
+        int cur = q.front(); q.pop();
+
+        for(pair<int, int>& neighbor: graph[cur]) {
+            if(!visited[neighbor.first]) {
+                q.push(neighbor.first);
+                visited[neighbor.first] = true;
+                visitedOrder.push_back(neighbor.first);
+            }
+        }
+    }
+
+    return visitedOrder;
+}
+```
+</details>
+
+### Analysis
+**Time Complexity:** $O(\V \+ E)$
+- Where V is the number of vertices in the graph, and E is the number of edges in the graph.
+- BFS visits all vertices in the graph and all edges which connect these vertices.
+
+**Space Complexity:** $O(V)$
+- Where V is the number of vertices in the graph.
+- BFS maintains a queue of vertices that need to be visited next.
+
+## Depth First Search
+## Give the length of the shortest path from 0 to 5
 
 
 
