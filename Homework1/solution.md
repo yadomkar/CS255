@@ -28,11 +28,34 @@ Time: $O(n\lg n)$, Space: $O(\lg n)$
 
 
 ### Optimal Approach
-2. **Optimal**: This approach employs a frequency array of size 52, representing uppercase and lowercase characters. The frequency array is used to compute the median and mode in constant time and space.
+**Optimal**: This approach employs a frequency array of size 52, representing uppercase and lowercase characters. The frequency array is used to compute the median and mode in constant time and space.
 
-### Code
+### Pseudocode
+```text
+Question1
+
+FUNCTION MEDIAN-AND-MODE(data[1..n])
+    DECLARE freq[1..52] ← {0}
+    FOR i ← 1 TO n
+        // Populate freq based on data
+    RETURN (FIND-MEDIAN(freq, n), FIND-MODE(freq))
+
+
+FUNCTION FIND-MEDIAN(freq[1..52], n)
+    medianIndex ← ⌈n/2⌉
+    // Determine median character based on freq in constant time
+    RETURN medianChar
+
+FUNCTION FIND-MODE(freq[1..52])
+    // Determine mode character based on freq in constant time
+    RETURN modeChar
+```
+
+
+
+### Code Snippet
 <details>
-<summary>Snippet</summary>
+<summary>Expand</summary>
 
 ```cpp
 class Question1 {
@@ -110,13 +133,41 @@ which is the index of the zero in B (starting from 1).
 ### Assumption
 Array A only contains positive numbers.
 
-### Approach
-- **Brute Force:** Linear search for 0 in array B. 
-- **Optimal Approach:** Divide and Conquer (modified binary search) using both arrays.
+### Brute Force Approach
+Linear search for 0 in array B.
 
-### Code
+Time: $O(n)$, Space: $O(1)$
+
+### Optimal Approach
+Divide and Conquer (modified binary search) using both arrays.
+
+### Pseudocode
+
+```text
+Question2
+
+FUNCTION WHERE-IS-THE-ZERO(a[1..n], b[1..n])
+    start ← 1
+    end ← n
+
+    WHILE start ≤ end DO
+        mid ← start + ⌊(end - start) / 2⌋
+        IF b[mid] = 0 THEN
+            RETURN mid
+        ELSE IF b[mid] = a[mid] THEN
+            start ← mid + 1
+        ELSE
+            end ← mid - 1
+        END IF
+    END WHILE
+
+    RETURN n
+
+```
+
+### Code Snippet
 <details>
-<summary>Snippet</summary>
+<summary>Expand</summary>
 
 ```cpp
 class Question2 {
