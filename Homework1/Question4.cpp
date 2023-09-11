@@ -11,6 +11,7 @@
 using namespace std;
 
 class Question4 {
+private:
     void dfs(char vertex, unordered_map<char, vector<char>>& graph, unordered_set<char>& visited, stack<char>& topo) {
         visited.insert(vertex);
 

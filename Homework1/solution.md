@@ -21,8 +21,14 @@ Output: Mode = R, Median = G
 ### Assumption 
 Latin characters refer to ASCII characters and exclude UTF-8 special characters.
 
-### Approach
-The solution employs a frequency array of size 52, representing uppercase and lowercase characters. The frequency array is used to compute the median and mode in constant time and space.
+### Brute Force Approach
+**Sorting**: Sort the array and find the median and mode in one pass.
+
+Time: $O(n\lg n)$, Space: $O(\lg n)$ 
+
+
+### Optimal Approach
+2. **Optimal**: This approach employs a frequency array of size 52, representing uppercase and lowercase characters. The frequency array is used to compute the median and mode in constant time and space.
 
 ### Code
 <details>
@@ -157,6 +163,8 @@ node order for each type of graph search, starting with 0.
 
 
 ### Breadth First Search
+
+
 
 ### Depth First Search
 ### Give the length of the shortest path from 0 to 5
