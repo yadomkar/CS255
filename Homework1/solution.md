@@ -260,7 +260,7 @@ static vector<int> breadthFirstSearch(vector<vector<pair<int, int>>>& graph, int
 
 ### Analysis
 **Time Complexity:** $O(V \+ E)$
-- Where V is the number of vertices in the graph, and E is the number of edges in the graph.
+- Where V is the number of vertices, and E is the number of edges in the graph.
 - BFS visits all vertices in the graph and all edges which connect these vertices.
 
 **Space Complexity:** $O(V)$
@@ -268,6 +268,57 @@ static vector<int> breadthFirstSearch(vector<vector<pair<int, int>>>& graph, int
 - BFS maintains a queue of vertices that need to be visited next.
 
 ## Depth First Search
+
+### Pseudocode
+
+```text
+procedure DFS(graph, start)
+  set visited = {}
+  visitedOrder := []
+
+  dfsHelper(start, graph, visited, visitedOrder)
+
+  return visitedOrder
+
+procedure dfsHelper(v, graph, visited, visitedOrder)
+  visited.add(start)
+  visitedOrder.append(v)
+
+  for neighbor w in graph[v]:
+    if not visited.contains(w):
+      dfsHelper(w, graph, visited, visitedOrder)
+```
+
+### Code Snippet
+<details>
+<summary>Expand</summary>
+
+```c++
+void dfsHelper(int start, vector<vector<pair<int, int>>>& graph, vector<bool>& visited, vector<int>& visitedOrder) {
+    visited[start] = true;
+    visitedOrder.push_back(start);
+
+    for(pair<int, int>& neighbor: graph[start]) {
+        if(!visited[neighbor.first]) {
+            dfsHelper(neighbor.first, graph, visited, visitedOrder);
+        }
+    }
+}
+
+vector<int> depthFirstSearch(vector<vector<pair<int, int>>>& graph, int start) {
+    vector<int> visitedOrder;
+    vector<bool> visited(graph.size(), false);
+    dfsHelper(start, graph, visited, visitedOrder);
+    return visitedOrder;
+}
+```
+</details>
+
+### Analysis
+**Time Complexity:** $O(V \+ E)$
+- Where V is the number of vertices, and E is the number of edges in the graph.
+- 
+
 ## Give the length of the shortest path from 0 to 5
 
 
