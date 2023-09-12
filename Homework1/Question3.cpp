@@ -70,7 +70,7 @@ public:
             for(const auto& neighbor: graph[cur]) {
                 if(distance[neighbor.first] > distance[cur] + neighbor.second) {
                     distance[neighbor.first] = distance[cur] + neighbor.second;
-                    minHeap.push(neighbor);
+                    minHeap.push({neighbor.first, distance[neighbor.first]});
                 }
             }
         }
@@ -80,7 +80,7 @@ public:
 //  Using BFS to find Shortest Path
     static vector<int> bfsShortestPath(vector<vector<pair<int, int>>>& graph, int start) {
         queue<int> q;
-        vector<int> distance(graph.size(), -1);
+        vector<int> distance(graph.size(), INT_MAX);
 
         q.push(start);
         distance[start] = 0;
@@ -89,7 +89,7 @@ public:
             int cur = q.front(); q.pop();
 
             for(pair<int, int>& neighbor: graph[cur]) {
-                if(distance[neighbor.first] < 0) {
+                if(distance[neighbor.first] == INT_MAX) {
                     q.push(neighbor.first);
                     distance[neighbor.first] = distance[cur] + 1;
                 }

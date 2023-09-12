@@ -51,8 +51,10 @@ function FIND-MODE(freq[1..52])
 
 
 ### Code Snippet
-<details>
-<summary>Expand</summary>
+
+[//]: # (<details>)
+
+[//]: # (<summary>Expand</summary>)
 
 ```cpp
 class Question1 {
@@ -97,7 +99,8 @@ public:
     }
 };
 ```
-</details>
+
+[//]: # (</details>)
 
 ### Analysis
 **Time Complexity:** $O(n)$
@@ -159,8 +162,10 @@ procedure whereIsTheZero(a, b)
 ```
 
 ### Code Snippet
-<details>
-<summary>Expand</summary>
+
+[//]: # (<details>)
+
+[//]: # (<summary>Expand</summary>)
 
 ```cpp
 class Question2 {
@@ -179,7 +184,8 @@ public:
     }
 };
 ```
-</details>
+
+[//]: # (</details>)
 
 ### Analysis
 **Time Complexity:** $O(\lg n)$
@@ -228,8 +234,10 @@ procedure breadthFirstSearch(graph, start)
 ```
 
 ### Code Snippet
-<details>
-<summary>Expand</summary>
+
+[//]: # (<details>)
+
+[//]: # (<summary>Expand</summary>)
 
 ```cpp
 static vector<int> breadthFirstSearch(vector<vector<pair<int, int>>>& graph, int start) {
@@ -256,7 +264,8 @@ static vector<int> breadthFirstSearch(vector<vector<pair<int, int>>>& graph, int
     return visitedOrder;
 }
 ```
-</details>
+
+[//]: # (</details>)
 
 ### Analysis
 **Time Complexity:** $O(V \+ E)$
@@ -290,8 +299,10 @@ procedure dfsHelper(v, graph, visited, visitedOrder)
 ```
 
 ### Code Snippet
-<details>
-<summary>Expand</summary>
+
+[//]: # (<details>)
+
+[//]: # (<summary>Expand</summary>)
 
 ```c++
 void dfsHelper(int start, vector<vector<pair<int, int>>>& graph, vector<bool>& visited, vector<int>& visitedOrder) {
@@ -312,7 +323,8 @@ vector<int> depthFirstSearch(vector<vector<pair<int, int>>>& graph, int start) {
     return visitedOrder;
 }
 ```
-</details>
+
+[//]: # (</details>)
 
 ### Analysis
 **Time Complexity:** $O(V \+ E)$
@@ -325,6 +337,71 @@ vector<int> depthFirstSearch(vector<vector<pair<int, int>>>& graph, int start) {
 
 ## Give the length of the shortest path from 0 to 5
 
+For the input graph, there are 2 ways to find the shortest path from 0 to 5. 
+BFS and Dijkstra's. However, in a graph where all costs are equal, Dijkstra = BFS. 
+In such a graph, the shortest path is always the path that visits the fewest number of edges.
 
+### Dijkstra's Algorithm Pseudocode
 
+```text
+procedure DijkstraShortestPath(graph, start)
+  distance := array(graph.size, ∞)
+  distance[start] := 0
+  queue := priority queue of (vertex, distance) based on distance
+  queue.enqueue((start, 0))
+
+  while queue is not empty
+    (cur, dist) := queue.dequeue()
+
+    for neighbor in graph[cur]
+      if distance[neighbor] > dist + graph[cur][neighbor]
+        distance[neighbor] := dist + graph[cur][neighbor]
+        queue.enqueue((neighbor, distance[neighbor]))
+
+  return distance
+```
+
+### BFS Shortest Path Pseudocode
+
+```text
+procedure BFSShortestPath(graph, start)
+  distance := array(graph.size, ∞)
+  distance[start] := 0
+  queue := queue of vertex
+  queue.enqueue(start)
+
+  while queue is not empty
+    cur := queue.dequeue()
+
+    for neighbor in graph[cur]
+      if distance[neighbor] == ∞
+        distance[neighbor] := distance[cur] + 1
+        queue.enqueue(neighbor)
+
+  return distance
+```
+
+### BFS Shortest Path Code Snippet
+
+```c++
+static vector<int> bfsShortestPath(vector<vector<pair<int, int>>>& graph, int start) {
+    queue<int> q;
+    vector<int> distance(graph.size(), INT_MAX);
+
+    q.push(start);
+    distance[start] = 0;
+
+    while(!q.empty()) {
+        int cur = q.front(); q.pop();
+
+        for(pair<int, int>& neighbor: graph[cur]) {
+            if(distance[neighbor.first] == INT_MAX) {
+                q.push(neighbor.first);
+                distance[neighbor.first] = distance[cur] + 1;
+            }
+        }
+    }
+    return distance;
+}
+```
 
