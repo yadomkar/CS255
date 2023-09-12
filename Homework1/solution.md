@@ -405,3 +405,11 @@ static vector<int> bfsShortestPath(vector<vector<pair<int, int>>>& graph, int st
 }
 ```
 
+### Analysis
+**Time Complexity:** $O(V \+ E)$
+- Where V is the number of vertices, and E is the number of edges in the graph.
+- BFS visits all vertices in the graph and all edges which connect these vertices.
+
+**Space Complexity:** $O(V)$
+- Where V is the number of vertices in the graph.
+- BFS maintains a queue of vertices that need to be visited next. Which in the worst case, could be all the vertices.
