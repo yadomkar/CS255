@@ -142,18 +142,18 @@ Divide and Conquer (modified binary search) using both arrays.
 
 ```text
 procedure whereIsTheZero(a, b)
-  start = 0
-  end = b.length
+  start := 0
+  end := b.length
 
   while start <= end
-    mid = start + (end - start) / 2
+    mid := start + (end - start) / 2
 
-    if b[mid] == 0
+    if b[mid] = 0
       return mid + 1
-    elif b[mid] == a[mid]
-      start = mid + 1
+    elif b[mid] = a[mid]
+      start := mid + 1
     else
-      end = mid - 1
+      end := mid - 1
 
   return b.length
 ```
@@ -213,13 +213,13 @@ node order for each type of graph search, starting with 0.
 ```text
 procedure breadthFirstSearch(graph, start)
   queue q
-  set visited = {}
+  set visited := {}
 
   q.enqueue(start)
   visited.add(start)
 
   while not q.isEmpty()
-    vertex v = q.dequeue()
+    vertex v := q.dequeue()
 
     for each neighbor w of v
       if not visited.contains(w)
@@ -273,7 +273,7 @@ static vector<int> breadthFirstSearch(vector<vector<pair<int, int>>>& graph, int
 
 ```text
 procedure DFS(graph, start)
-  set visited = {}
+  set visited := {}
   visitedOrder := []
 
   dfsHelper(start, graph, visited, visitedOrder)
@@ -317,7 +317,11 @@ vector<int> depthFirstSearch(vector<vector<pair<int, int>>>& graph, int start) {
 ### Analysis
 **Time Complexity:** $O(V \+ E)$
 - Where V is the number of vertices, and E is the number of edges in the graph.
-- 
+- DFS visits all vertices in the graph and all edges which connect these vertices.
+
+**Space Complexity:** $O(V)$
+- Where V is the number of vertices in the graph.
+- DFS stores a stack of vertices that have not yet been visited. Recursive DFS, as in above code, uses the call stack.
 
 ## Give the length of the shortest path from 0 to 5
 
