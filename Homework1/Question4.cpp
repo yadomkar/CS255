@@ -24,7 +24,7 @@ private:
     }
 
 public:
-    stack<char> topologicalSort(unordered_map<char, vector<char>>& graph) {
+    stack<char> dfsTopologicalSort(unordered_map<char, vector<char>>& graph) {
         stack<char> topo;
         unordered_set<char> visited;
         for(auto& [key, value]: graph){
@@ -47,7 +47,7 @@ int main() {
             {'g', {'d', 'f'}}
     };
 
-    stack<char> topologicalSorted = Question4().topologicalSort(graph);
+    stack<char> topologicalSorted = Question4().dfsTopologicalSort(graph);
 
     while(!topologicalSorted.empty()) {
         cout << topologicalSorted.top() << " ";

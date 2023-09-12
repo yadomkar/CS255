@@ -413,3 +413,74 @@ static vector<int> bfsShortestPath(vector<vector<pair<int, int>>>& graph, int st
 **Space Complexity:** $O(V)$
 - Where V is the number of vertices in the graph.
 - BFS maintains a queue of vertices that need to be visited next. Which in the worst case, could be all the vertices.
+
+---
+
+## Q4: TOPOLOGICAL SORTING
+Run the topological sort algorithm on the graph (Hint: where should you start?)
+
+<p align="center">
+    <img src="assets/topo.png"/>
+</p>
+
+### Assumption
+The graph this solution is expected to topologically sort is a DAG.
+
+### Approach
+2 ways to do this, using DFS or using Kahn's Algorithm.
+
+### DFS Topological Sort Pseudocode
+```text
+procedure DFSTopologicalSort(graph)
+  visited := set of vertex
+  topo := stack of vertex
+
+  for each vertex v in graph
+    if v not in visited
+      dfs(v, graph, visited, topo)
+
+  return topo
+
+procedure dfs(v, graph, visited, topo)
+  visited.add(v)
+
+  for each neighbor w of v
+    if w not in visited
+      dfs(w, graph, visited, topo)
+
+  topo.push(v)
+```
+
+### DFS Topological Sort Code Snippet
+```c++
+stack<char> dfsTopologicalSort(unordered_map<char, vector<char>>& graph) {
+    stack<char> topo;
+    unordered_set<char> visited;
+    for(auto& [key, value]: graph){
+        if(visited.find(key) == visited.end()) {
+            dfs(key, graph, visited, topo);
+        }
+    }
+    return topo;
+}
+
+void dfs(char vertex, unordered_map<char, vector<char>>& graph, unordered_set<char>& visited, stack<char>& topo) {
+    visited.insert(vertex);
+
+    for(char& neighbor: graph[vertex]) {
+        if(visited.find(neighbor) == visited.end()) {
+            dfs(neighbor, graph, visited, topo);
+        }
+    }
+    topo.push(vertex);
+}
+```
+
+### DFS Topological Sort Analysis
+**Time Complexity:** $O(V \+ E)$
+- Where V is the number of vertices, and E is the number of edges in the graph.
+- DFS visits all vertices in the graph and all edges which connect these vertices.
+
+**Space Complexity:** $O(V)$
+- Where V is the number of vertices in the graph.
+- The `visited` set, recursive call stack, and `topo` stack each takes $O(V)$ space.
