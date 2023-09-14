@@ -214,6 +214,8 @@ node order for each type of graph search, starting with 0.
 
 ## Breadth First Search
 
+### BFS Order: `0 2 3 1 4 7 5 6 `
+
 ### Pseudocode
 
 ```text
@@ -231,6 +233,21 @@ procedure breadthFirstSearch(graph, start)
       if not visited.contains(w)
         q.enqueue(w)
         visited.add(w)
+```
+
+### BFS Queue Progression
+
+```text
+Initial:  | Queue: [ 0 ]
+
+Current Node: 0 | Queue: [ 2, 3 ]
+Current Node: 2 | Queue: [ 3, 1, 4 ]
+Current Node: 3 | Queue: [ 1, 4, 7 ]
+Current Node: 1 | Queue: [ 4, 7, 5, 6 ]
+Current Node: 4 | Queue: [ 7, 5, 6 ]
+Current Node: 7 | Queue: [ 5, 6 ]
+Current Node: 5 | Queue: [ 6 ]
+Current Node: 6 | Queue: [  ]
 ```
 
 ### Code Snippet
@@ -278,6 +295,8 @@ static vector<int> breadthFirstSearch(vector<vector<pair<int, int>>>& graph, int
 
 ## Depth First Search
 
+### DFS Order: `0 2 1 5 6 4 3 7`
+
 ### Pseudocode
 
 ```text
@@ -296,6 +315,28 @@ procedure dfsHelper(v, graph, visited, visitedOrder)
   for neighbor w in graph[v]:
     if not visited.contains(w):
       dfsHelper(w, graph, visited, visitedOrder)
+```
+
+### DFS Call Stack Progression
+```text
+Initial: | Call Stack: [ ]
+
+DFS(0):  | Call Stack: [ 0 ]
+DFS(2):  | Call Stack: [ 0, 2 ]
+DFS(1):  | Call Stack: [ 0, 2, 1 ]
+DFS(5):  | Call Stack: [ 0, 2, 1, 5 ]
+DFS(6):  | Call Stack: [ 0, 2, 1, 5, 6 ]
+DFS(4):  | Call Stack: [ 0, 2, 1, 5, 6, 4 ]
+Return from DFS(4) | Call Stack: [ 0, 2, 1, 5, 6 ]
+Return from DFS(6) | Call Stack: [ 0, 2, 1, 5 ]
+Return from DFS(5) | Call Stack: [ 0, 2, 1 ]
+Return from DFS(1) | Call Stack: [ 0, 2 ]
+Return from DFS(2) | Call Stack: [ 0 ]
+DFS(3):  | Call Stack: [ 0, 3 ]
+DFS(7):  | Call Stack: [ 0, 3, 7 ]
+Return from DFS(7) | Call Stack: [ 0, 3 ]
+Return from DFS(3) | Call Stack: [ 0 ]
+Return from DFS(0) | Call Stack: [ ]
 ```
 
 ### Code Snippet
@@ -337,6 +378,9 @@ vector<int> depthFirstSearch(vector<vector<pair<int, int>>>& graph, int start) {
 
 ## Give the length of the shortest path from 0 to 5
 
+### Length of the shortest path from 0 to 5: `3`
+
+### Approach
 For the input graph, there are 2 ways to find the shortest path from 0 to 5. 
 BFS and Dijkstra's. However, in a graph where all costs are equal, Dijkstra = BFS. 
 In such a graph, the shortest path is always the path that visits the fewest number of edges.
@@ -379,6 +423,21 @@ procedure BFSShortestPath(graph, start)
         queue.enqueue(neighbor)
 
   return distance
+```
+
+### BFS Shortest Path Progression
+
+```text
+Initial: | Queue: [ 0 ]                 | Distance: [ 0, ∞, ∞, ∞, ∞, ∞, ∞, ∞ ]
+
+Current Node 0: | Queue: [ 2, 3 ]       | Distance: [ 0, ∞, 1, 1, ∞, ∞, ∞, ∞ ]
+Current Node 2: | Queue: [ 3, 1, 4 ]    | Distance: [ 0, 2, 1, 1, 2, ∞, ∞, ∞ ]
+Current Node 3: | Queue: [ 1, 4, 7 ]    | Distance: [ 0, 2, 1, 1, 2, ∞, ∞, 2 ]
+Current Node 1: | Queue: [ 4, 7, 5, 6 ] | Distance: [ 0, 2, 1, 1, 2, 3, 3, 2 ]
+Current Node 4: | Queue: [ 7, 5, 6 ]    | Distance: [ 0, 2, 1, 1, 2, 3, 3, 2 ]
+Current Node 7: | Queue: [ 5, 6 ]       | Distance: [ 0, 2, 1, 1, 2, 3, 3, 2 ]
+Current Node 5: | Queue: [ 6 ]          | Distance: [ 0, 2, 1, 1, 2, 3, 3, 2 ]
+Current Node 6: | Queue: [  ]           | Distance: [ 0, 2, 1, 1, 2, 3, 3, 2 ]
 ```
 
 ### BFS Shortest Path Code Snippet
