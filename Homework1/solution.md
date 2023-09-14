@@ -214,7 +214,7 @@ node order for each type of graph search, starting with 0.
 
 ## Breadth First Search
 
-### BFS Order: `0 2 3 1 4 7 5 6 `
+### BFS Order: `0 2 3 1 4 7 5 6`
 
 ### Pseudocode
 
@@ -238,7 +238,7 @@ procedure breadthFirstSearch(graph, start)
 ### BFS Queue Progression
 
 ```text
-Initial:  | Queue: [ 0 ]
+Initial:        | Queue: [ 0 ]
 
 Current Node: 0 | Queue: [ 2, 3 ]
 Current Node: 2 | Queue: [ 3, 1, 4 ]
@@ -319,21 +319,21 @@ procedure dfsHelper(v, graph, visited, visitedOrder)
 
 ### DFS Call Stack Progression
 ```text
-Initial: | Call Stack: [ ]
+Initial:           | Call Stack: [ ]
 
-DFS(0):  | Call Stack: [ 0 ]
-DFS(2):  | Call Stack: [ 0, 2 ]
-DFS(1):  | Call Stack: [ 0, 2, 1 ]
-DFS(5):  | Call Stack: [ 0, 2, 1, 5 ]
-DFS(6):  | Call Stack: [ 0, 2, 1, 5, 6 ]
-DFS(4):  | Call Stack: [ 0, 2, 1, 5, 6, 4 ]
+DFS(0):            | Call Stack: [ 0 ]
+DFS(2):            | Call Stack: [ 0, 2 ]
+DFS(1):            | Call Stack: [ 0, 2, 1 ]
+DFS(5):            | Call Stack: [ 0, 2, 1, 5 ]
+DFS(6):            | Call Stack: [ 0, 2, 1, 5, 6 ]
+DFS(4):            | Call Stack: [ 0, 2, 1, 5, 6, 4 ]
 Return from DFS(4) | Call Stack: [ 0, 2, 1, 5, 6 ]
 Return from DFS(6) | Call Stack: [ 0, 2, 1, 5 ]
 Return from DFS(5) | Call Stack: [ 0, 2, 1 ]
 Return from DFS(1) | Call Stack: [ 0, 2 ]
 Return from DFS(2) | Call Stack: [ 0 ]
-DFS(3):  | Call Stack: [ 0, 3 ]
-DFS(7):  | Call Stack: [ 0, 3, 7 ]
+DFS(3):            | Call Stack: [ 0, 3 ]
+DFS(7):            | Call Stack: [ 0, 3, 7 ]
 Return from DFS(7) | Call Stack: [ 0, 3 ]
 Return from DFS(3) | Call Stack: [ 0 ]
 Return from DFS(0) | Call Stack: [ ]
