@@ -626,4 +626,4 @@ public static int f1(int n) {
 } 
 ```
 
-### Answer: B. $O(n)$
+### Answer: $B. O(n)$
