@@ -612,3 +612,18 @@ static vector<char> kahnsTopologicalSort(unordered_map<char, vector<char>>& grap
 **Space Complexity:** $O(V)$
 - Where V is the number of vertices in the graph.
 - The `indegree` map, and the queue used to store nodes with zero indegree, each take $O(V)$ space.
+
+---
+
+## Q5: MATCHING CLASSES
+
+```java
+public static int f1(int n) {
+    int x = 0;
+    for (int i = 0; i < n; i++)
+        x++;
+    return x;
+} 
+```
+
+### Answer: B. $O(n)$
