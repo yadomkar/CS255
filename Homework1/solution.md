@@ -626,4 +626,40 @@ public static int f1(int n) {
 } 
 ```
 
-### Answer: $B. O(n)$
+#### Answer: B. $O(n)$
+
+```java
+public static int f2(int n) {
+    if (n == 0) return 0;
+    return f2(n/2) + f1(n) + f2(n/2);
+} 
+```
+
+#### Answer: C. $O(n\log n)$
+
+```java
+public static int f3(int n) {
+    if (n == 0 || n == 1) return 1;
+    return f3(n-1) + f1(n);
+}
+```
+
+#### Answer: D. $O(n^2)$
+
+```java
+public static int f4(int n) {
+    if (n == 1) return 0;
+    return 1 + f4(n/3);
+}
+```
+
+#### Answer: A. $O(\log n)$
+
+```java
+public static int f6(int n) {
+    if (n == 1) return 0;
+    return 1 + f6(n/3) +f6(n/3) +f6(n/3);
+}
+```
+
+#### Answer: A. $O(\log n)$
