@@ -151,9 +151,9 @@ procedure whereIsTheZero(a, b)
   while start <= end
     mid := start + (end - start) / 2
 
-    if b[mid] = 0
+    if b[mid] == 0
       return mid + 1
-    elif b[mid] = a[mid]
+    elif b[mid] == a[mid]
       start := mid + 1
     else
       end := mid - 1
@@ -487,8 +487,9 @@ Run the topological sort algorithm on the graph (Hint: where should you start?)
 ### Assumption
 The graph this solution is expected to topologically sort is a DAG.
 
-### Approach
-2 ways to do this, using DFS or using Kahn's Algorithm.
+### DFS Approach
+This algorithm performs DFS and pushes the node to a stack on backtracking.
+To ensure all nodes are covered, it initiates DFS over all nodes.
 
 ### DFS Topological Sort Pseudocode
 ```text
@@ -545,3 +546,69 @@ void dfs(char vertex, unordered_map<char, vector<char>>& graph, unordered_set<ch
 **Space Complexity:** $O(V)$
 - Where V is the number of vertices in the graph.
 - The `visited` set, recursive call stack, and `topo` stack each takes $O(V)$ space.
+
+### Kahn's Algorithm Approach
+This algorithm calculates the indegree of nodes. 
+It then repeatedly removes nodes with indegree zero and updates the indegree of its neighbors.
+It starts with a node of indegree zero.
+
+### Kahn's Algorithm Pseudocode
+```text
+procedure KahnTopologicalSort(graph)
+  indegree := map of vertex to indegree
+  topo := empty list of vertex for result
+  queue := empty queue of vertex
+
+  for each vertex v in graph
+    if indegree[v] == 0
+      queue.enqueue(v)
+
+  while queue is not empty
+    v := queue.dequeue()
+    topo.append(v)
+
+    for each neighbor w of v
+      indegree[w] := indegree[w] - 1
+      if indegree[w] == 0
+        queue.enqueue(w)
+
+  return topo
+```
+
+### Kahn's Algorithm Code Snippet
+```c++
+static vector<char> kahnsTopologicalSort(unordered_map<char, vector<char>>& graph) {
+    vector<char> topo;
+    unordered_map<char, int> indegree;
+
+    for(auto& [key, value]: graph) {
+        for(auto& node: value) indegree[node]++;
+    }
+
+    queue<char> q;
+    for(auto& [key, value]: graph) {
+        if(indegree[key] == 0) q.push(key);
+    }
+
+    while(!q.empty()) {
+        char cur = q.front();
+        q.pop();
+        topo.push_back(cur);
+        for(auto& neighbor: graph[cur]) {
+            indegree[neighbor]--;
+            if(indegree[neighbor] == 0) q.push(neighbor);
+        }
+    }
+
+    return topo;
+}
+```
+
+### Kahn's Algorithm Analysis
+**Time Complexity:** $O(V \+ E)$
+- Where V is the number of vertices, and E is the number of edges in the graph.
+- This algorithm processes all vertices in the graph and all edges once.
+
+**Space Complexity:** $O(V)$
+- Where V is the number of vertices in the graph.
+- The `indegree` map, and the queue used to store nodes with zero indegree, each take $O(V)$ space.
