@@ -617,6 +617,7 @@ static vector<char> kahnsTopologicalSort(unordered_map<char, vector<char>>& grap
 
 ## Q5: MATCHING CLASSES
 
+### 1.
 ```java
 public static int f1(int n) {
     int x = 0;
@@ -625,41 +626,49 @@ public static int f1(int n) {
     return x;
 } 
 ```
-
+The function loops over n once.
 #### Answer: B. $O(n)$
-
+ 
+### 2.
 ```java
 public static int f2(int n) {
     if (n == 0) return 0;
     return f2(n/2) + f1(n) + f2(n/2);
 } 
 ```
-
+The function has a similar recurrence relation to Merge Sort.
 #### Answer: C. $O(n\log n)$
 
+### 3.
 ```java
 public static int f3(int n) {
     if (n == 0 || n == 1) return 1;
     return f3(n-1) + f1(n);
 }
 ```
-
+The function has a similar recurrence relation to Quick Sort's worst case.
 #### Answer: D. $O(n^2)$
 
+### 4.
 ```java
 public static int f4(int n) {
     if (n == 1) return 0;
     return 1 + f4(n/3);
 }
 ```
-
+The function recursively calls itself on a third of its input until the base case.
+The function has a similar recurrence relation to ternary search. The time complexity will be $O(\log_3 n)$
 #### Answer: A. $O(\log n)$
 
+### 5.
 ```java
 public static int f6(int n) {
     if (n == 1) return 0;
     return 1 + f6(n/3) +f6(n/3) +f6(n/3);
 }
 ```
+The function has a recurrence relation of $T(n) = 3T\left(\frac{n}{3}\right) + O(1)
+$.
+This can be Case 1 of Master's Theorem.
 
-#### Answer: A. $O(\log n)$
+#### Answer: A. $O(n)$
