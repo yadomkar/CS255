@@ -428,7 +428,7 @@ procedure BFSShortestPath(graph, start)
 ### BFS Shortest Path Progression
 
 ```text
-Initial: | Queue: [ 0 ]                 | Distance: [ 0, ∞, ∞, ∞, ∞, ∞, ∞, ∞ ]
+Initial:        | Queue: [ 0 ]          | Distance: [ 0, ∞, ∞, ∞, ∞, ∞, ∞, ∞ ]
 
 Current Node 0: | Queue: [ 2, 3 ]       | Distance: [ 0, ∞, 1, 1, ∞, ∞, ∞, ∞ ]
 Current Node 2: | Queue: [ 3, 1, 4 ]    | Distance: [ 0, 2, 1, 1, 2, ∞, ∞, ∞ ]
@@ -481,6 +481,8 @@ Run the topological sort algorithm on the graph (Hint: where should you start?)
 <p align="center">
     <img src="assets/topo.png"/>
 </p>
+
+### Topological Order: `e b g f d c a`
 
 ### Assumption
 The graph this solution is expected to topologically sort is a DAG.
