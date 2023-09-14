@@ -669,6 +669,140 @@ public static int f6(int n) {
 ```
 The function has a recurrence relation of $T(n) = 3T\left(\frac{n}{3}\right) + O(1)
 $.
-This can be Case 1 of Master's Theorem.
+This is Case 1 of Master's Theorem.
 
 #### Answer: A. $O(n)$
+
+---
+
+## Q6: MULTIGRAPH TO SIMPLE GRAPH
+
+Given an adjacency-list representation of a multigraph G =(V, E), describe an O(V + E)-time
+algorithm to compute the adjacency-list representation of the “equivalent” undirected graph
+G’=(V,E’), where E’ consists of the edges in E with all multiple edges between two vertices
+replaced by a single edge and with all self-loops removed.
+
+### Input Multi Graph
+
+<img src="assets/multiGraph.png"/>
+
+### Pseudocode
+
+```text
+procedure multiToSimple(multiGraph)
+  simpleGraph := result simple graph
+
+  for each vertex v in multiGraph
+    uniqueEdges := set to store unique edges of this vertex
+
+    for each neighbor w of v
+      if v != w
+        uniqueEdges.insert(w)
+
+    simpleGraph.append(list(uniqueEdges))
+
+  return simpleGraph
+```
+
+### Code Snippet
+
+```c++
+static vector<vector<int>> multiToSimple(const vector<vector<int>>& multiGraph) {
+    vector<vector<int>> simpleGraph;
+    for(int vertex = 0; vertex < multiGraph.size(); vertex++) {
+        set<int> uniqueVertices;
+        for(auto& neighbor: multiGraph[vertex]) {
+            if(vertex != neighbor) uniqueVertices.insert(neighbor);
+        }
+        simpleGraph.push_back(vector<int>(uniqueVertices.begin(), uniqueVertices.end()));
+    }
+    return simpleGraph;
+}
+```
+
+
+
+
+### Output Simple Graph
+
+<img src="assets/simpleGraph.png"/>
+
+---
+
+## Q7: LOMBARDI GRAPHS
+
+Suppose we are given an undirected graph G = (V , E), and we identify two nodes v and w in G. Give an algorithm that
+computes the number of shortest v-w paths in G. (The algorithm should not list all the paths; just
+the number suffices.) The running time of your algorithm should be $O(m \+ n)$ for a graph with n
+nodes and m edges.
+
+### Input Graph
+
+<img src="assets/lombardi.png"/>
+
+### Pseudocode
+
+```text
+procedure bfsLombardi(graph, start)
+  distance := array(graph.size(), ∞)
+  count := array(graph.size(), 0)
+
+  queue := bfs queue
+  queue.enqueue(start)
+  distance[start] := 0
+  count[start] := 1
+
+  while queue is not empty
+    cur := queue.dequeue()
+
+    for each neighbor w of cur
+      if distance[w] == ∞
+        queue.enqueue(w)
+        distance[w] := distance[cur] + 1
+      if distance[w] == distance[cur] + 1
+        count[w] += count[cur]
+
+  return count
+```
+
+### Code Snippet
+
+```c++
+static vector<int> bfsLombardi(vector<vector<int>>& graph, int start) {
+    queue<int> q;
+    vector<int> distance(graph.size(), INT_MAX);
+    vector<int> count(graph.size());
+
+    q.push(start);
+    distance[start] = 0;
+    count[start] = 1;
+
+    while(!q.empty()) {
+        int cur = q.front(); q.pop();
+
+        for(auto& neighbor: graph[cur]) {
+            if(distance[neighbor] == INT_MAX) {
+                q.push(neighbor);
+                distance[neighbor] = distance[cur] + 1;
+            }
+            if(distance[neighbor] == distance[cur] + 1) {
+                count[neighbor] += count[cur];
+            }
+        }
+    }
+    return count;
+}
+``` 
+
+### Output
+
+```text
+Paths from 0 to 1: 1
+Paths from 0 to 2: 1
+Paths from 0 to 3: 1
+Paths from 0 to 4: 2
+Paths from 0 to 5: 2
+Paths from 0 to 6: 4
+Paths from 0 to 7: 2
+Paths from 0 to 8: 6
+```

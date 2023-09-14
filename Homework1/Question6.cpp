@@ -13,11 +13,11 @@ public:
     static vector<vector<int>> multiToSimple(const vector<vector<int>>& multiGraph) {
         vector<vector<int>> simpleGraph;
         for(int vertex = 0; vertex < multiGraph.size(); vertex++) {
-            set<int> uniqueVertices;
+            set<int> uniqueEdges;
             for(auto& neighbor: multiGraph[vertex]) {
-                if(vertex != neighbor) uniqueVertices.insert(neighbor);
+                if(vertex != neighbor) uniqueEdges.insert(neighbor);
             }
-            simpleGraph.push_back(vector<int>(uniqueVertices.begin(), uniqueVertices.end()));
+            simpleGraph.push_back(vector<int>(uniqueEdges.begin(), uniqueEdges.end()));
         }
         return simpleGraph;
     }
