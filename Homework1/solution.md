@@ -1,5 +1,6 @@
 # Homework 1 Documentation
-**Author:** Omkar Yadav
+- **Class:** CS 255 DAA by Katerina Potika
+- **Author:** Omkar Yadav
 
 ---
 
@@ -720,21 +721,29 @@ static vector<vector<int>> multiToSimple(const vector<vector<int>>& multiGraph) 
 }
 ```
 
+### Output Simple Graph Adjacency List
+```text
+0 -> 1 2 3 4
+1 -> 0 2 3 4
+2 -> 0 1 3 4 5
+3 -> 0 1 2 4 5
+4 -> 0 1 2 3 5
+5 -> 2 3 4
+```
+
+### Output Simple Graph
+
+<img src="assets/simpleGraph.png"/>
+
 ### Analysis
 **Time Complexity:** $O(V \+ E\lg E)$
 - Using an unordered set, the time complexity is $O(V + E)$, optimal when edge ordering in the adjacency list isn't a concern.
-- This algorithm visits each vertex and all its respective edges once. 
+- This algorithm visits each vertex and all its respective edges once.
 
 **Space Complexity:** $O(E)$
 - At each vertex, the algorithm creates a set to eliminate any duplicate edges.
 - At most the algorithm stores all the edges in the sets.
 
-
-
-
-### Output Simple Graph
-
-<img src="assets/simpleGraph.png"/>
 
 ---
 
@@ -825,3 +834,5 @@ Paths from 0 to 8: 6
 - Where V is the number of vertices in the graph.
 - BFS maintains a queue of vertices that need to be visited next. Which in the worst case, could be all the vertices.
 - The algorithm is also saving the shortest path to all vertices in a `distance` array.
+
+---
