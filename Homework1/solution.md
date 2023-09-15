@@ -710,15 +710,24 @@ procedure multiToSimple(multiGraph)
 static vector<vector<int>> multiToSimple(const vector<vector<int>>& multiGraph) {
     vector<vector<int>> simpleGraph;
     for(int vertex = 0; vertex < multiGraph.size(); vertex++) {
-        set<int> uniqueVertices;
+        set<int> uniqueEdges;
         for(auto& neighbor: multiGraph[vertex]) {
-            if(vertex != neighbor) uniqueVertices.insert(neighbor);
+            if(vertex != neighbor) uniqueEdges.insert(neighbor);
         }
-        simpleGraph.push_back(vector<int>(uniqueVertices.begin(), uniqueVertices.end()));
+        simpleGraph.push_back(vector<int>(uniqueEdges.begin(), uniqueEdges.end()));
     }
     return simpleGraph;
 }
 ```
+
+### Analysis
+**Time Complexity:** $O(V \+ E\lg E)$
+- Using an unordered set, the time complexity is $O(V + E)$, optimal when edge ordering in the adjacency list isn't a concern.
+- This algorithm visits each vertex and all its respective edges once. 
+
+**Space Complexity:** $O(E)$
+- At each vertex, the algorithm creates a set to eliminate any duplicate edges.
+- At most the algorithm stores all the edges in the sets.
 
 
 
@@ -806,3 +815,13 @@ Paths from 0 to 6: 4
 Paths from 0 to 7: 2
 Paths from 0 to 8: 6
 ```
+
+### Analysis
+**Time Complexity:** $O(V \+ E)$
+- Where V is the number of vertices, and E is the number of edges in the graph.
+- BFS visits all vertices in the graph and all edges which connect these vertices.
+
+**Space Complexity:** $O(V)$
+- Where V is the number of vertices in the graph.
+- BFS maintains a queue of vertices that need to be visited next. Which in the worst case, could be all the vertices.
+- The algorithm is also saving the shortest path to all vertices in a `distance` array.
