@@ -20,16 +20,15 @@ Output: Mode = R, Median = G
 ```
 
 ### Assumption 
-Latin characters refer to ASCII characters and exclude UTF-8 special characters.
+- Latin characters refer to ASCII characters and exclude UTF-8 special characters.
 
 ### Brute Force Approach
-**Sorting**: Sort the array and find the median and mode in one pass.
-
-Time: $O(n\lg n)$, Space: $O(\lg n)$ 
+- **Sorting**: Sort the array and find the median and mode in one pass.
+- Time: $O(n\lg n)$, Space: $O(\lg n)$ 
 
 
 ### Optimal Approach
-**Optimal**: This approach employs a frequency array of size 52, representing uppercase and lowercase characters. The frequency array is used to compute the median and mode in constant time and space.
+- **Optimal**: This approach employs a frequency array of size 52, representing uppercase and lowercase characters. The frequency array is used to compute the median and mode in constant time and space.
 
 ### Pseudocode
 ```text
@@ -132,15 +131,14 @@ which is the index of the zero in B (starting from 1).
 ```
 
 ### Assumption
-Array A only contains positive numbers.
+- Array A only contains positive numbers.
 
 ### Brute Force Approach
-Linear search for 0 in array B.
-
-Time: $O(n)$, Space: $O(1)$
+- Linear search for 0 in array B.
+- Time: $O(n)$, Space: $O(1)$
 
 ### Optimal Approach
-Divide and Conquer (modified binary search) using both arrays.
+- Divide and Conquer (modified binary search) using both arrays.
 
 ### Pseudocode
 
@@ -382,7 +380,7 @@ vector<int> depthFirstSearch(vector<vector<pair<int, int>>>& graph, int start) {
 ### Length of the shortest path from 0 to 5: `3`
 
 ### Approach
-For the input graph, there are 2 ways to find the shortest path from 0 to 5. 
+- For the input graph, there are 2 ways to find the shortest path from 0 to 5. 
 BFS and Dijkstra's. However, in a graph where all costs are equal, Dijkstra = BFS. 
 In such a graph, the shortest path is always the path that visits the fewest number of edges.
 
@@ -486,10 +484,10 @@ Run the topological sort algorithm on the graph (Hint: where should you start?)
 ### Topological Order: `e b g f d c a`
 
 ### Assumption
-The graph this solution is expected to topologically sort is a DAG.
+- The graph this solution is expected to topologically sort is a DAG.
 
 ### DFS Approach
-This algorithm performs DFS and pushes the node to a stack on backtracking.
+- This algorithm performs DFS and pushes the node to a stack on backtracking.
 To ensure all nodes are covered, it initiates DFS over all nodes.
 
 ### DFS Topological Sort Pseudocode
@@ -549,7 +547,7 @@ void dfs(char vertex, unordered_map<char, vector<char>>& graph, unordered_set<ch
 - The `visited` set, recursive call stack, and `topo` stack each takes $O(V)$ space.
 
 ### Kahn's Algorithm Approach
-This algorithm calculates the indegree of nodes. 
+- This algorithm calculates the indegree of nodes. 
 It then repeatedly removes nodes with indegree zero and updates the indegree of its neighbors.
 It starts with a node of indegree zero.
 
@@ -627,8 +625,8 @@ public static int f1(int n) {
     return x;
 } 
 ```
-The function loops over n once.
-#### Answer: B. $O(n)$
+- The function loops over n once.
+- **Answer:** B. $O(n)$
  
 ### 2.
 ```java
@@ -637,8 +635,8 @@ public static int f2(int n) {
     return f2(n/2) + f1(n) + f2(n/2);
 } 
 ```
-The function has a similar recurrence relation to Merge Sort.
-#### Answer: C. $O(n\log n)$
+- The function has a similar recurrence relation to Merge Sort.
+- **Answer:** C. $O(n\log n)$
 
 ### 3.
 ```java
@@ -647,8 +645,8 @@ public static int f3(int n) {
     return f3(n-1) + f1(n);
 }
 ```
-The function has a similar recurrence relation to Quick Sort's worst case.
-#### Answer: D. $O(n^2)$
+- The function has a similar recurrence relation to Quick Sort's worst case.
+- **Answer:** D. $O(n^2)$
 
 ### 4.
 ```java
@@ -657,9 +655,9 @@ public static int f4(int n) {
     return 1 + f4(n/3);
 }
 ```
-The function recursively calls itself on a third of its input until the base case.
+- The function recursively calls itself on a third of its input until the base case.
 The function has a similar recurrence relation to ternary search. The time complexity will be $O(\log_3 n)$
-#### Answer: A. $O(\log n)$
+- **Answer:** A. $O(\log n)$
 
 ### 5.
 ```java
@@ -668,11 +666,11 @@ public static int f6(int n) {
     return 1 + f6(n/3) +f6(n/3) +f6(n/3);
 }
 ```
-The function has a recurrence relation of $T(n) = 3T\left(\frac{n}{3}\right) + O(1)
+- The function has a recurrence relation of $T(n) = 3T\left(\frac{n}{3}\right) + O(1)
 $.
 This is Case 1 of Master's Theorem.
 
-#### Answer: A. $O(n)$
+- **Answer:** A. $O(n)$
 
 ---
 
@@ -686,6 +684,9 @@ replaced by a single edge and with all self-loops removed.
 ### Input Multi Graph
 
 <img src="assets/multiGraph.png"/>
+
+### Approach
+- Loop over all vertices of the adjacency list and add the vertex's edges to a set to eliminate duplicates. 
 
 ### Pseudocode
 
@@ -758,6 +759,10 @@ nodes and m edges.
 ### Input Graph
 
 <img src="assets/lombardi.png"/>
+
+
+### Approach
+- Modified version of BFS which stores counts of the shortest paths.
 
 ### Pseudocode
 
