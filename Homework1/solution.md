@@ -694,7 +694,7 @@ procedure multiToSimple(multiGraph)
   simpleGraph := result simple graph
 
   for each vertex v in multiGraph
-    uniqueEdges := set to store unique edges of this vertex
+    uniqueEdges := unordered set to store unique edges of this vertex
 
     for each neighbor w of v
       if v != w
@@ -723,21 +723,22 @@ static vector<vector<int>> multiToSimple(const vector<vector<int>>& multiGraph) 
 
 ### Output Simple Graph Adjacency List
 ```text
-0 -> 1 2 3 4
-1 -> 0 2 3 4
-2 -> 0 1 3 4 5
-3 -> 0 1 2 4 5
-4 -> 0 1 2 3 5
-5 -> 2 3 4
+0 -> 4 3 2 1 
+1 -> 4 3 2 0 
+2 -> 4 3 1 5 0 
+3 -> 4 2 1 5 0 
+4 -> 3 2 1 5 0 
+5 -> 4 3 2 
 ```
+- To get ordered adjacency lists, we can use `set` instead of `unordered_set`. This will increase time complexity to $O(V + E\lg E)$.
 
 ### Output Simple Graph
 
 <img src="assets/simpleGraph.png"/>
 
 ### Analysis
-**Time Complexity:** $O(V \+ E\lg E)$
-- Using an unordered set, the time complexity is $O(V + E)$, optimal when edge ordering in the adjacency list isn't a concern.
+**Time Complexity:** $O(V \+ E)$
+- Using an ordered set, the time complexity is $O(V + E\lg E)$, optimal when edge ordering in the adjacency list is a priority.
 - This algorithm visits each vertex and all its respective edges once.
 
 **Space Complexity:** $O(E)$

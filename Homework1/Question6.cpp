@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <vector>
-#include <set>
+#include <unordered_set>
 
 using namespace std;
 
@@ -13,7 +13,7 @@ public:
     static vector<vector<int>> multiToSimple(const vector<vector<int>>& multiGraph) {
         vector<vector<int>> simpleGraph;
         for(int vertex = 0; vertex < multiGraph.size(); vertex++) {
-            set<int> uniqueEdges;
+            unordered_set<int> uniqueEdges;
             for(auto& neighbor: multiGraph[vertex]) {
                 if(vertex != neighbor) uniqueEdges.insert(neighbor);
             }
@@ -46,12 +46,20 @@ int main() {
 
 /*
 
-Output:
+Output using set:
 0 -> 1 2 3 4
 1 -> 0 2 3 4
 2 -> 0 1 3 4 5
 3 -> 0 1 2 4 5
 4 -> 0 1 2 3 5
 5 -> 2 3 4
+
+Output using unordered_set
+0 -> 4 3 2 1
+1 -> 4 3 2 0
+2 -> 4 3 1 5 0
+3 -> 4 2 1 5 0
+4 -> 3 2 1 5 0
+5 -> 4 3 2
 
  */
