@@ -56,19 +56,18 @@ public:
 
     static vector<int> kadanesMaximumSubarray(vector<int>& array) {
         int maxSum = 0, maxTemp = 0;
-        int tempArrive = 0, arrive = 0, depart = -1;
+        int arrive = 0, depart = -1;
 
         for(int i = 0; i < array.size(); i++) {
             maxTemp += array[i];
 
             if(maxTemp < 0) {
                 maxTemp = 0;
-                tempArrive = i + 1;
+                arrive = i + 1;
             }
 
             if(maxSum < maxTemp) {
                 maxSum = maxTemp;
-                arrive = tempArrive;
                 depart = i;
             }
         }
