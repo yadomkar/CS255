@@ -7,6 +7,7 @@
 #include <queue>
 #include <unordered_map>
 #include <set>
+#include <map>
 #include <fstream>
 #include <unordered_set>
 
@@ -31,7 +32,7 @@ public:
 
 class Erdos {
 public:
-    unordered_map<int, vector<int>> graph;
+    map<int, vector<int>> graph;
     int nodes;
     int edges;
 
@@ -41,8 +42,8 @@ public:
         nodes = (int) graph.size();
     }
 
-    unordered_map<int, vector<int>> makeAdjListFromFile(const string& filename) {
-        unordered_map<int, vector<int>> adjList;
+    map<int, vector<int>> makeAdjListFromFile(const string& filename) {
+        map<int, vector<int>> adjList;
 
         ifstream file(filename);
         if(!file.is_open()) {
@@ -96,8 +97,6 @@ public:
                     visited.insert(collaborator);
                 }
             }
-
-
         }
 
         return collaborators;
